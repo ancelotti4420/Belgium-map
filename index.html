@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Belgium Map</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    .title {
+      position: absolute;
+      z-index: 1000;
+      top: 15px;
+      left: 15px;
+      background: rgba(20, 20, 20, 0.9);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="title">🇧🇪 Belgium Map</div>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <script>
+    // Belçika'nın merkezine odaklan
+    const map = L.map('map').setView([50.8503, 4.3517], 8);
+
+    // OpenStreetMap haritası
+    L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }
+    ).addTo(map);
+
+    // Brüksel işareti
+    L.marker([50.8503, 4.3517])
+      .addTo(map)
+      .bindPopup('<b>🇧🇪 Brussels</b><br>Belgium')
+      .openPopup();
+  </script>
+
+</body>
+</html>
